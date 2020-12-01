@@ -8,14 +8,18 @@ module.exports = {
     main: './src/public/main.js'
   },
   output: {
-    filename: '[name].[contenthash].js',
+    filename: 'js/[name].[contenthash].js',
     path: path.join(__dirname, '../dist')
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/public/index.html'
     }),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash].css',
+      chunkFilename: 'css/[id].[contenthash].css'
+    })
   ],
   module: {
     rules: [
@@ -42,7 +46,7 @@ module.exports = {
       },
       {
         test: /\.(scss|sass)$/,
-        use: ['style-loader','css-loader', 'sass-loader']
+        use: [MiniCssExtractPlugin.loader,'css-loader', 'sass-loader']
       }
     ]
   },

@@ -1,7 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
   entry: {
@@ -15,8 +15,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/public/index.html'
     }),
-    new VueLoaderPlugin(),
-    new CleanWebpackPlugin()
+    new VueLoaderPlugin()
   ],
   module: {
     rules: [
@@ -38,12 +37,12 @@ module.exports = {
         ]
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader','vue-style-loader']
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
       },
       {
         test: /\.(scss|sass)$/,
-        use: ['style-loader','css-loader']
+        use: ['style-loader','css-loader', 'sass-loader']
       }
     ]
   },

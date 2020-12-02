@@ -1,18 +1,18 @@
 <template>
-  {{count}}
+  {{basePath}}
   <div @click="increment" class="app-demo">hello</div>
 </template>
 
 <script>
 export default {
-  computed: {
-    count() {
-      
+  data() {
+    return {
+      basePath: BASE_PATH
     }
   },
   methods: {
     increment() {
-      
+      console.log(`${BASE_PATH}`)
     }
   }
 }

@@ -12,7 +12,8 @@ module.exports = merge(common, {
     new OptimizeCssAssetsWebpackPlugin(),
     new TerserJSPlugin({}),
     new webpack.DefinePlugin({
-      BASE_PATH: JSON.stringify('product base path')
+      AXIOS_BASE_PATH: JSON.stringify('/api'),
+      AXIOS_TIME_OUT: JSON.stringify('5000')
     })
   ]
 })

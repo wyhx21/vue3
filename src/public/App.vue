@@ -1,32 +1,31 @@
 <template>
-  {{basePath}}
-  <div @click="increment" class="app-demo">hello</div>
+  <div @click="loginRequest" class="app-demo">hello</div>
   <app-store/>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
-import vStore from '@com/store.vue'
+import appStore from '@com/store.vue'
 
 export default {
   components: {
-    appStore: vStore
+    appStore
   },
   data() {
     return {
-      basePath: BASE_PATH
+      
     }
   },
   methods: {
     ...mapActions('account',{
       login: 'login'
     }),
-    increment() {
+    loginRequest() {
       this.login({
-        name: 'zhangsanns',
-        sysId: 9
-      })
-      console.log(`${BASE_PATH}`)
+        userCode: 'admin',
+        passWord: 'admin'
+      }).then(res => console.log(res))
+      .catch(error => console.log(error))
     }
   }
 }

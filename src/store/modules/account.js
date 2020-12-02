@@ -1,25 +1,43 @@
+import { Login } from '@axios/system/account.js'
 export default {
   namespaced: true,
   state: {
-    name: null,
+    roleId: null,
+    roleType: null,
     sysId: null,
-    count: 0
+    userName: null,
+    token: null
   },
   getters: {
-    getName: state => state.name,
-    getSysId: state => state.sysId,
-    getCount: state => state.count
+    roleId: state => state.roleId,
+    roleType: state => state.roleType,
+    sysId: state => state.sysId,
+    userName: state => state.userName,
+    token: state => state.token,
   },
   mutations: {
-    setName: (state, name = null) => state.name = name,
+    setRoleId: (state, roleId = null) => state.roleId = roleId,
+    setRoleType: (state, roleType = null) => state.roleType = roleType,
     setSysId: (state, sysId = null) => state.sysId = sysId,
-    increment: (state, inc = 1) => state.count += inc
+    setUserName: (state, userName = null) => state.userName = userName,
+    setToken: (state, token = null) => state.token = token,
   },
   actions: {
-    login({commit, getters}, {name, sysId, inc}){
-      commit('setName',name)
-      commit('setSysId',sysId)
-      commit('increment', inc)
+    login({commit}, {userCode = '', passWord = ''}){
+      console.log(userCode, passWord)
+      return new Promise((resolve, reject) => {
+        Login({userCode, passWord})
+        .then(res => {
+          commit('setRoleId',res.roleId)
+          commit('setRoleType',res.roleType)
+          commit('setSysId',res.sysId)
+          commit('setUserName',res.userName)
+          commit('setToken',res.token)
+          resolve()
+        }).catch(err => {
+          reject(err)
+        })
+      })
     }
   }
 }

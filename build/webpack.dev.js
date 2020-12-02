@@ -7,7 +7,8 @@ module.exports = merge(common, {
   mode: 'development',
   plugins: [
     new webpack.DefinePlugin({
-      BASE_PATH: JSON.stringify('dev base path')
+      AXIOS_BASE_PATH: JSON.stringify('/api'),
+      AXIOS_TIME_OUT: JSON.stringify('5000')
     })
   ],
   devServer: {

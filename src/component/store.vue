@@ -1,17 +1,19 @@
 <template>
   <div class="app-demo">
-    {{`name: ${name}, sysId: ${sysId}, count: ${count}`}}
+    <div>{{`roleId:       ${roleId}`}}</div>
+    <div>{{`roleType:     ${roleType}`}}</div>
+    <div>{{`sysId:        ${sysId}`}}</div>
+    <div>{{`userName:     ${userName}`}}</div>
+    <div>{{`token:        ${token}`}}</div>
   </div>
 </template>
 <script>
 import { mapGetters } from 'vuex';
 export default {
   computed: {
-    ...mapGetters('account',{
-      name: 'getName',
-      sysId: 'getSysId',
-      count: 'getCount'
-    })
+    ...mapGetters('account',[
+      'userName','roleId','roleType','sysId','token'
+    ])
   }
 }
 </script>

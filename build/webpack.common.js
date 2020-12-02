@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const EncodingPlugin = require('webpack-encoding-plugin');
 const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
@@ -21,6 +22,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css',
       chunkFilename: 'css/[id].[contenthash].css'
+    }),
+    new EncodingPlugin({
+      encoding: 'utf-8'
     })
   ],
   resolve: {
@@ -29,7 +33,8 @@ module.exports = {
       '@style': path.resolve(__dirname,'../src/style'),
       '@store': path.resolve(__dirname,'../src/store'),
       '@com': path.resolve(__dirname,'../src/component'),
-      '@public': path.resolve(__dirname,'../src/public')
+      '@public': path.resolve(__dirname,'../src/public'),
+      '@axios': path.resolve(__dirname,'../src/axios')
     }
   },
   module: {

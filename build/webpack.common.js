@@ -2,7 +2,6 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
-const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
   entry: {
@@ -49,7 +48,7 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: [devMode ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
       },
       {
         test: /\.(scss|sass)$/,

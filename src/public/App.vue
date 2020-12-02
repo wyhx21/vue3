@@ -18,10 +18,5 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '../style/style';
-
-.app-demo {
-  color: $main-yello;
-  font-size: 200px;
-}
+@import '@style/public/app.scss';
 </style>

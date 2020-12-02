@@ -1,5 +1,5 @@
 import { createStore } from 'vuex';
-import loginInfo from './modules/loginInfo.js';
+import loginInfo from '@store/modules/loginInfo.js';
 
 const store = createStore({
   modules: {

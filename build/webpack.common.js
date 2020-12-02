@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
+const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
   entry: {
@@ -21,6 +22,15 @@ module.exports = {
       chunkFilename: 'css/[id].[contenthash].css'
     })
   ],
+  resolve: {
+    alias: {
+      '@img': path.resolve(__dirname,'../src/img'),
+      '@style': path.resolve(__dirname,'../src/style'),
+      '@store': path.resolve(__dirname,'../src/store'),
+      '@com': path.resolve(__dirname,'../src/component'),
+      '@public': path.resolve(__dirname,'../src/public')
+    }
+  },
   module: {
     rules: [
       {
@@ -32,17 +42,12 @@ module.exports = {
         loader: 'babel-loader'
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {limit: 5000,name: 'imgs/[hash].[ext]'}
-          }
-        ]
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource'
       },
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
+        use: [devMode ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader']
       },
       {
         test: /\.(scss|sass)$/,

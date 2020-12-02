@@ -1,10 +1,10 @@
 <template>
   <div class="app-demo">
-    <div>{{`roleId:       ${roleId}`}}</div>
-    <div>{{`roleType:     ${roleType}`}}</div>
-    <div>{{`sysId:        ${sysId}`}}</div>
-    <div>{{`userName:     ${userName}`}}</div>
-    <div>{{`token:        ${token}`}}</div>
+    <div>{{`roleId:${roleId}`}}</div>
+    <div>{{`roleType:${roleType}`}}</div>
+    <div>{{`sysId:${sysId}`}}</div>
+    <div>{{`userName:${userName}`}}</div>
+    <div>{{`token:${token}`}}</div>
   </div>
 </template>
 <script>

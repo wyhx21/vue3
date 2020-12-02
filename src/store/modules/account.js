@@ -16,11 +16,13 @@ export default {
     token: state => state.token,
   },
   mutations: {
-    setRoleId: (state, roleId = null) => state.roleId = roleId,
-    setRoleType: (state, roleType = null) => state.roleType = roleType,
-    setSysId: (state, sysId = null) => state.sysId = sysId,
-    setUserName: (state, userName = null) => state.userName = userName,
-    setToken: (state, token = null) => state.token = token,
+    loginInfo: (state, {roleId = null,roleType = null,sysId = null,userName = null,token = null}) => {
+      state.roleId = roleId
+      state.roleType = roleType
+      state.sysId = sysId
+      state.userName = userName
+      state.token = token
+    }
   },
   actions: {
     login({commit}, {userCode = '', passWord = ''}){
@@ -28,13 +30,10 @@ export default {
       return new Promise((resolve, reject) => {
         Login({userCode, passWord})
         .then(res => {
-          commit('setRoleId',res.roleId)
-          commit('setRoleType',res.roleType)
-          commit('setSysId',res.sysId)
-          commit('setUserName',res.userName)
-          commit('setToken',res.token)
+          commit('loginInfo',res)
           resolve()
         }).catch(err => {
+          commit('loginInfo',{})
           reject(err)
         })
       })

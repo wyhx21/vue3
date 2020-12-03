@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import Home from '@com/Home.vue'
 import Store from '@com/Store.vue'
 
@@ -8,6 +8,6 @@ const routes = [
 ]
 
 export default createRouter({
-  history: new createWebHistory(),
+  history: new createWebHashHistory(),
   routes
 })

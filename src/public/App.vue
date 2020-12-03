@@ -1,7 +1,6 @@
 <template>
   <div @click="loginRequest" class="app-demo">
-    <router-link to="/">Go to Home</router-link>
-    <br/>
+    <router-link to="/">Go to Home</router-link> |
     <router-link to="/store">Go to Store</router-link>
   </div>
   <hr/>

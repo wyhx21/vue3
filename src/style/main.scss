@@ -1,13 +1,13 @@
 @import '@style/const.scss';
+@import '@style/common/login.scss';
 
-body {
-  background-image: url('@img/01.jpg');
-  #app {
-    background-color: $back-color;
+html,body,#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 
-    .app-demo {
-      color: $font-color;
-      font-size: 1em;
-    }
-  }
+#app {
+  display: flex;
+  flex-direction: column;
 }

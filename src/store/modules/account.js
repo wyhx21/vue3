@@ -26,7 +26,6 @@ export default {
   },
   actions: {
     login({commit}, {userCode = '', passWord = ''}){
-      console.log(userCode, passWord)
       return new Promise((resolve, reject) => {
         Login({userCode, passWord})
         .then(res => {

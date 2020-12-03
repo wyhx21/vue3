@@ -34,7 +34,7 @@ axios.interceptors.response.use(
         case '000000': return dataAxios.data
         case '200001': {
           store.commit('account/loginInfo',{})
-          break;
+          break
         }
         default: {
           errorLog({

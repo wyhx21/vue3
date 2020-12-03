@@ -17,9 +17,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions('account',{
-      login: 'login'
-    }),
+    ...mapActions('account',['login']),
     loginRequest() {
       this.login({
         userCode: 'admin',

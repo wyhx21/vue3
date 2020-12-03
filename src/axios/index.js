@@ -1,5 +1,5 @@
 import axiosSource from 'axios';
-import store from '@store/store.js'
+import store from '@store/index.js'
 
 function errorLog(err){
   if (process.env.NODE_ENV === 'development') {

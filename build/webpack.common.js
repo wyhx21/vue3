@@ -34,7 +34,8 @@ module.exports = {
       '@store': path.resolve(__dirname,'../src/store'),
       '@com': path.resolve(__dirname,'../src/component'),
       '@public': path.resolve(__dirname,'../src/public'),
-      '@axios': path.resolve(__dirname,'../src/axios')
+      '@axios': path.resolve(__dirname,'../src/axios'),
+      '@router': path.resolve(__dirname,'../src/router')
     }
   },
   module: {

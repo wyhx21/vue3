@@ -1,5 +1,6 @@
 <template>
   <div class="app-demo">
+    <span @click="loginRequest">登录</span>
     <div>{{`roleId:${roleId}`}}</div>
     <div>{{`roleType:${roleType}`}}</div>
     <div>{{`sysId:${sysId}`}}</div>
@@ -8,15 +9,23 @@
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   computed: {
     ...mapGetters('account',[
       'userName','roleId','roleType','sysId','token'
     ])
-  }
+  },
+  methods: {
+    ...mapActions('account',['login']),
+    loginRequest() {
+      this.login({
+        userCode: 'admin',
+        passWord: 'admin'
+      }).then(res => console.log(res))
+      .catch(error => console.log(error))
+    }
+  },
 }
 </script>
-<style lang="scss" scoped>
-@import '@style/public/app.scss';
-</style>

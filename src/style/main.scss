@@ -4,5 +4,10 @@ body {
   background-image: url('@img/01.jpg');
   #app {
     background-color: $back-color;
+
+    .app-demo {
+      color: $font-color;
+      font-size: 1em;
+    }
   }
 }

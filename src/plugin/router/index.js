@@ -14,7 +14,13 @@ const route = createRouter({
 })
 
 route.beforeEach((to, from, next) => {
-  next()
+  if(to.name === 'login') {
+    return next()
+  } else if(to.matched.length < 1) {
+    return next('/container')
+  } else {
+    next()
+  }
 })
 
 // route.isReady().then(succ => console.log(succ)).catch(err => console.log(err))

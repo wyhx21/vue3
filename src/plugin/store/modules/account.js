@@ -1,4 +1,4 @@
-import { Login } from '@axios/system/account.js'
+import { login } from '@axios/system/account.js'
 export default {
   namespaced: true,
   state: {
@@ -25,9 +25,10 @@ export default {
     }
   },
   actions: {
-    login({commit}, {userCode = '', passWord = ''}){
+    loginSubmit({commit}, {userCode = '', passWord = ''}){
       return new Promise((resolve, reject) => {
-        Login({userCode, passWord})
+        debugger
+        login({userCode, passWord})
         .then(res => {
           commit('loginInfo',res)
           resolve()

@@ -1,5 +1,6 @@
 import axiosSource from 'axios';
 import store from '@store/index.js'
+import Router from '@router/index.js'
 import { Message } from '@vxe/index.js';
 
 function errorLog(err){
@@ -45,6 +46,7 @@ axios.interceptors.response.use(
         case '000000': return dataAxios.data
         case '200001': {
           store.commit('account/loginInfo',{})
+          Router.push('/login')
           break
         }
         default: {

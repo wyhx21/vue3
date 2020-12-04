@@ -31,11 +31,12 @@ module.exports = {
     alias: {
       '@img': path.resolve(__dirname,'../src/img'),
       '@style': path.resolve(__dirname,'../src/style'),
-      '@store': path.resolve(__dirname,'../src/store'),
+      '@store': path.resolve(__dirname,'../src/plugin/store'),
       '@com': path.resolve(__dirname,'../src/component'),
       '@public': path.resolve(__dirname,'../src/public'),
-      '@axios': path.resolve(__dirname,'../src/axios'),
-      '@router': path.resolve(__dirname,'../src/router')
+      '@axios': path.resolve(__dirname,'../src/plugin/axios'),
+      '@router': path.resolve(__dirname,'../src/plugin/router'),
+      '@vxe': path.resolve(__dirname,'../src/plugin/vxe')
     }
   },
   module: {

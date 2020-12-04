@@ -25,7 +25,9 @@ export default {
       this.login({
         userCode: this.userCode,
         passWord: this.passWord
-      }).then(res => console.log(res))
+      }).then(res => {
+        this.$router.push('/container')
+      })
       .catch(error => console.log(error))
     }
   }

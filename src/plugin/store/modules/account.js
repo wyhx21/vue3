@@ -27,7 +27,6 @@ export default {
   actions: {
     loginSubmit({commit}, {userCode = '', passWord = ''}){
       return new Promise((resolve, reject) => {
-        debugger
         login({userCode, passWord})
         .then(res => {
           commit('loginInfo',res)

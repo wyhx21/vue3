@@ -2,70 +2,32 @@
 
 .app-login {
   height: 100%;
-  display: flex;
-  flex-direction: column;
   background: url('@img/01.jpg');
-  opacity: .4;
-  
-  .login-header {
-    flex: 1;
-  }
-  
-  .login-fotter{
-    flex:1.5;
-  }
-  
-  .login-contain {
-    height: 220px;
-    display: flex;
-    justify-content: center;
-  }
   
   .login-form {
     width: 260px;
+    height: 210px;
     border-radius: 20px;
     padding: 20px;
     background-color: $back-color-001;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    position: relative;
+    left: calc(50vw - 150px);
+    top: calc(40vh - 125px);
     div {
-      flex:1;
-      margin: 5px;
-      padding: 5px;
-      display: flex;
-      align-items: center;
-      span {
-        display: inline-block;
-        height: 25px;
-        width: 60px;
-        font-size: 1em;
-        text-align: center;
-      }
-  
-      input {
-        height: 30px;
-        border: 1px solid $border-color-01;
-        border-radius: 5px;
-        max-width: 170px;
-        font-size: 1em;
-        flex: 1;
-      }
-  
-      div {
-        width: 100%;
-        height: 25px;
-        border-radius: 5px;
-        background-color:$button-color-01;
-        display: flex;
-        justify-content: center;
-        margin: 0px;
-        font-size: 1em;
-  
-        &:hover {
-          background-color: $button-color-01-hover;
-        }
-      }
+      height: 40px;
+      width: 100%;
     }
+
+    p {
+      height: 15px;
+      display: block;
+      margin: 0px;
+      padding: 0px;
+    }
+  }
+
+  .login-submit {
+    width: 100%;
+    height: 40px;
   }
 }

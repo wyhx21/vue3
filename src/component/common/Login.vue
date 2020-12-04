@@ -1,14 +1,19 @@
 <template>
   <div class="app-login">
-    <div class="login-header"></div>
-    <div class="login-contain">
-      <div class="login-form">
-        <div><span>用户名</span><input v-model="userCode"/></div>
-        <div><span>密  码</span><input type="password" v-model="passWord"/></div>
-        <div><div @click="login">登录</div></div>
+    <div class="login-form">
+      <p/>
+      <div>
+        <vxe-input v-model="userCode" placeholder="请输入用户名" clearable/>
+      </div>
+      <p/><p/>
+      <div>
+        <vxe-input v-model="passWord" type="password" placeholder="请输入密码" clearable/>
+      </div>
+      <p/><p/>
+      <div>
+        <vxe-button class="login-submit" @click="login" type="submit" status="primary" :loading='loading'>登录</vxe-button>
       </div>
     </div>
-    <div class="login-fotter"></div>
   </div>
 </template>
 
@@ -18,19 +23,24 @@ export default {
   data() {
     return {
       userCode: 'admin',
-      passWord: 'admin'
+      passWord: 'admin',
+      loading: false
     }
   },
   methods: {
     ...mapActions('account',['loginSubmit']),
     login(){
+      this.loading = true
       this.loginSubmit({
         userCode: this.userCode,
         passWord: this.passWord
       }).then(res => {
+        this.loading = false
         this.$router.push('/container')
       })
-      .catch(error => console.log(error))
+      .catch(error => {
+        this.loading = false
+      })
     }
   }
 }

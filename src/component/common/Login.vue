@@ -11,7 +11,7 @@
       </div>
       <p/><p/>
       <div>
-        <vxe-button class="login-submit" @click="login" type="submit" status="primary" :loading='loading'>登录</vxe-button>
+        <vxe-button class="app-row" @click="login" type="submit" status="primary" :loading='loading'>登录</vxe-button>
       </div>
     </div>
   </div>

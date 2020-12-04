@@ -55,7 +55,7 @@ axios.interceptors.response.use(
         }
       }
     }
-    return res
+    return response
   },
   error => {
     let message = error.message

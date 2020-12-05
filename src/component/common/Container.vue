@@ -58,7 +58,7 @@ export default {
       this.roleShow = true
     },
     getRoleInfo() { // 获取角色信息
-      this.systemRole().then().catch()
+      this.systemRole().then(() => {}).catch(() => {})
     }
   }
 }

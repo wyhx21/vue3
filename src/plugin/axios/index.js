@@ -45,9 +45,9 @@ axios.interceptors.response.use(
       switch (respCode) {
         case '000000': return dataAxios.data
         case '200001': {
-          store.commit('account/loginInfo',{})
+          store.dispatch('account/clearLoginInfo')
           Router.push('/login')
-          break
+          return Promise.reject(dataAxios)
         }
         default: {
           infoLog(dataAxios)

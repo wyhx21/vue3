@@ -1,5 +1,5 @@
 import { login, userRole } from '@axios/system/account.js'
-import { filterParam } from '@utils/array.js'
+// import { filterParam } from '@utils/array.js'
 export default {
   namespaced: true,
   state: {
@@ -15,12 +15,13 @@ export default {
     roleName: (state, getters) => {
       const _sysId = getters.sysId
       const _roleId = getters.roleId
-      if(null == _sysId || null == _roleId) {
-        return ''
-      }
-      const _system = filterParam(state.roleInfo, _sysId, 'code')[0]
-      return filterParam(_system['children'],_roleId,'code')[0]['value']
-      // return state.roleInfo.filter(item => _sysId == item.code)[0]['children'].filter(role => _roleId == role.code)[0]['value']
+      const _roleInfo = state.roleInfo
+      if(!_sysId || !_roleId) { return '' }
+      const _systems = _roleInfo.filter(item => item['code'] == _sysId)
+      if(!_systems || _systems.length < 1) {return '' }
+      const _roles = _systems[0]['children'].filter(item => item['code'] == _roleId)
+      if(!_roles || _roles.length < 1) {return '' }
+      return _roles[0]['value']
     }
   },
   mutations: {
@@ -38,6 +39,10 @@ export default {
     }
   },
   actions: {
+    clearLoginInfo({commit}) {
+      commit('loginInfo',{})
+      commit('roleInfo',[])
+    },
     loginSubmit({commit}, {userCode = '', passWord = ''}){
       return new Promise((resolve, reject) => {
         login({userCode, passWord})

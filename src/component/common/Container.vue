@@ -14,10 +14,10 @@
       footer
     </div>
 
-    <div class="app-draw-left" :class="userShow ? 'app-draw-left-show' : 'app-draw-left-hidden'">
+    <div :class="colClass">
 
     </div>
-    <div class="app-draw-bottom" :class="roleShow ? 'app-draw-bottom-show' : 'app-draw-bottom-hidden'">
+    <div :class="rowClass">
 
     </div>
     <span class="app-bj" @click="hiddenBj()" v-if="bjShow"></span>
@@ -30,7 +30,13 @@ export default {
   computed: {
     ...mapGetters('account',[
       'userName','roleName'
-    ])
+    ]),
+    colClass () {
+      return `app-draw-col app-draw-col-left-${this.userShow ? 'show':'hidden'}`
+    },
+    rowClass() {
+      return `app-draw-row app-draw-row-bottom-${this.roleShow ? 'show':'hidden'}`
+    }
   },
   data() {
     return {

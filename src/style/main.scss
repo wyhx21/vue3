@@ -24,7 +24,7 @@ html,body,#app {
     z-index: 999;
   }
 
-  .app-draw-left {
+  .app-draw-col {
     position: fixed;
     display: block;
     margin: 0;
@@ -36,17 +36,27 @@ html,body,#app {
     z-index: 1000;
   }
 
-  .app-draw-left-hidden {
-    transition: left .5s ease-out;
-    left: -60vw;
-  }
-
-  .app-draw-left-show {
+  .app-draw-col-left-show {
     transition: left .5s ease-in;
     left: 0;
   }
 
-  .app-draw-bottom {
+  .app-draw-col-left-hidden {
+    transition: left .5s ease-out;
+    left: -60vw;
+  }
+
+  .app-draw-col-right-show {
+    transition: right .5s ease-in;
+    right: 0;
+  }
+
+  .app-draw-col-right-hidden {
+    transition: right .5s ease-out;
+    right: -60vw;
+  }
+
+  .app-draw-row {
     position: fixed;
     display: block;
     margin: 0;
@@ -57,13 +67,23 @@ html,body,#app {
     z-index: 1000;
   }
 
-  .app-draw-bottom-hidden {
+  .app-draw-row-bottom-show {
+    transition: bottom .5s ease-in;
+    bottom: 0;
+  }
+
+  .app-draw-row-bottom-hidden {
     transition: bottom .5s ease-out;
     bottom: -60vh;
   }
 
-  .app-draw-bottom-show {
-    transition: bottom .5s ease-in;
-    bottom: 0;
+  .app-draw-row-top-show {
+    transition: top .5s ease-in;
+    top: 0;
+  }
+
+  .app-draw-row-top-hidden {
+    transition: top .5s ease-out;
+    top: -60vh;
   }
 }

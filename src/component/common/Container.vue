@@ -1,10 +1,10 @@
 <template>
   <div class="app-container">
     <div class="container-header">
-      <div class="info" @click="showUserInfo">
+      <div class="info">
         {{userName}}
       </div>
-      <div class="title">后台管理系统</div>
+      <div class="title">{{system['value']}}</div>
       <div class="info" @click="showRoleInfo">{{roleName}}</div>
     </div>
     <div class="container-main">
@@ -14,34 +14,30 @@
       footer
     </div>
 
-    <div :class="colClass">
-
-    </div>
-    <div :class="rowClass">
-
+    <div class="app-draw-row" :class="rowClass">
+      <change-role ref='systemChangeRole'/>
     </div>
     <span class="app-bj" @click="hiddenBj()" v-if="bjShow"></span>
   </div>
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex';
-
+import ChangeRole from '@com/system/ChangeRole.vue';
 export default {
+  components: {
+    ChangeRole
+  },
   computed: {
     ...mapGetters('account',[
-      'userName','roleName'
+      'userName','roleName', 'system'
     ]),
-    colClass () {
-      return `app-draw-col app-draw-col-left-${this.userShow ? 'show':'hidden'}`
-    },
     rowClass() {
-      return `app-draw-row app-draw-row-bottom-${this.roleShow ? 'show':'hidden'}`
+      return `app-draw-row-bottom-${this.roleShow ? 'show':'hidden'}`
     }
   },
   data() {
     return {
       bjShow: false,
-      userShow: false,
       roleShow: false
     }
   },
@@ -52,14 +48,10 @@ export default {
     ...mapActions('account',['systemRole']),
     hiddenBj () {
       this.bjShow = false
-      this.userShow = false
       this.roleShow = false
     },
-    showUserInfo() {
-      this.bjShow = true
-      this.userShow = true
-    },
     showRoleInfo() {
+      this.$refs.systemChangeRole.initChecked()
       this.bjShow = true
       this.roleShow = true
     },

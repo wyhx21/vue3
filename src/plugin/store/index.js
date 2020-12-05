@@ -4,11 +4,12 @@ import account from '@store/modules/account.js';
 
 const store = createStore({
   modules: {
-    account: account
+    account
   },
   plugins: [
     new VuexPersistence({
-      storage: window.localStorage
+      storage: window.localStorage,
+      modules: ['account']
     }).plugin
   ]
 });

@@ -1,19 +1,18 @@
 <template>
   <div class="app-draw-container">
-    <vxe-table
-      ref="systemChangeRoleTable"
-      highlight-current-row
-      @cell-click ='changeChecked'
-      :row-style = 'rowStyleSet'
-      :data="sysRoleList">
-      <vxe-table-column type="radio" width="60">
-        <template #header>
-          <vxe-button type="text" @click="changeRole">切换</vxe-button>
-        </template>
-      </vxe-table-column>
-      <vxe-table-column field="sysName" title="系统名称"></vxe-table-column>
-      <vxe-table-column field="roleName" title="角色名称"></vxe-table-column>
-    </vxe-table>
+    <div class="app-container-one-row">
+      <vxe-table
+        ref="systemChangeRoleTable"
+        highlight-current-row
+        @cell-click ='changeChecked'
+        :row-style = 'rowStyleSet'
+        :data="sysRoleList">
+        <vxe-table-column type="radio" width="40"></vxe-table-column>
+        <vxe-table-column field="sysName" title="系统名称"></vxe-table-column>
+        <vxe-table-column field="roleName" title="角色名称"></vxe-table-column>
+      </vxe-table>
+    </div>
+    <vxe-button @click="changeRole" type="submit" status="primary" :style='buttonClass' :loading='loading'>切换角色</vxe-button>
   </div>
 </template>
 <script>
@@ -29,14 +28,25 @@ export default {
     return {
       hightLightStyle: {
         color: 'red'
-      }
+      },
+      buttonClass: {
+        width: '100%',
+        height: '40px'
+      },
+      loading: false
     }
   },
   methods: {
     ...mapActions('account',['roleChange']),
     changeRole() {
       let row = this.$refs.systemChangeRoleTable.getRadioRecord();
-      this.roleChange(row)
+      this.loading = true
+      this.roleChange(row).then(res => {
+        this.loading = false
+        this.$emit('submit')
+      }).catch(err => {
+        this.loading = false
+      })
     },
     initChecked() {
       let checkedRow = this.sysRoleList.filter(item => item['roleId'] == this.roleId)[0]

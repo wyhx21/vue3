@@ -12,8 +12,8 @@ export default {
     sysId: state => state.userInfo.sysId,
     userName: state => state.userInfo.userName,
     token: state => state.userInfo.token,
-    system: state => {
-      const _sysId = state.sysId
+    system: (state, getters) => {
+      const _sysId = getters.sysId
       const _roleInfo = state.roleInfo
       if(!_sysId || !_roleInfo) { return {}}
       const _systems = _roleInfo.filter(item => item['code'] == _sysId)
@@ -60,7 +60,6 @@ export default {
     roleChange: (state, {sysId, roleId}) => {
       state.userInfo.sysId = sysId
       state.userInfo.roleId = roleId
-      console.log(state.userInfo)
     }
   },
   actions: {

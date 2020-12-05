@@ -15,9 +15,9 @@
     </div>
 
     <div class="app-draw-row" :class="rowClass">
-      <change-role ref='systemChangeRole'/>
+      <change-role @submit='hiddenChangeRole' ref='systemChangeRole'/>
     </div>
-    <span class="app-bj" @click="hiddenBj()" v-if="bjShow"></span>
+    <span class="app-bj" @click="hiddenChangeRole" v-if="bjShow"></span>
   </div>
 </template>
 <script>
@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     ...mapActions('account',['systemRole']),
-    hiddenBj () {
+    hiddenChangeRole () {
       this.bjShow = false
       this.roleShow = false
     },

@@ -1,10 +1,12 @@
-import { login, userRole } from '@axios/system/account.js'
+import { login, userRole,userMenu,userAuth,roleChange } from '@axios/system/account.js'
 // import { filterParam } from '@utils/array.js'
 export default {
   namespaced: true,
   state: {
     userInfo: {},
-    roleInfo: []
+    roleInfo: [],
+    roleMenu: {},
+    roleAuth: {}
   },
   getters: {
     roleId: state => state.userInfo.roleId,
@@ -40,34 +42,25 @@ export default {
         }
       }
       return res
-    }
+    },
+    roleSize: (state,getters) => getters.sysRoleList.length,
   },
   mutations: {
     // 登录信息
-    loginInfo: (state, {roleId = null,roleType = null,sysId = null,userName = null,token = null}) => {
-      state.userInfo = {
-        roleId,
-        roleType,
-        sysId,
-        userName,
-        token
-      }
-    },
+    loginInfo: (state, {roleId = null,roleType = null,sysId = null,userName = null,token = null}) => 
+      state.userInfo = {roleId, roleType, sysId, userName, token},
     // 角色信息
-    roleInfo: (state, roleInfo) => {
-      state.roleInfo = roleInfo
-    },
-    roleChange: (state, {sysId, roleId}) => {
+    roleInfo: (state, roleInfo) => state.roleInfo = roleInfo,
+    roleMenu: (state, roleMenu) => state.roleMenu = roleMenu,
+    roleAuth: (state, roleAuth) => state.roleAuth = roleAuth,
+    roleChange: (state, {sysId, roleId, roleType, userName}) => {
       state.userInfo.sysId = sysId
       state.userInfo.roleId = roleId
+      state.userInfo.roleType = roleType
+      state.userInfo.userName = userName
     }
   },
   actions: {
-    // 清空登录信息
-    clearLoginInfo({commit}) {
-      commit('loginInfo',{})
-      commit('roleInfo',[])
-    },
     // 登录
     loginSubmit({commit}, {userCode = '', passWord = ''}){
       return new Promise((resolve, reject) => {
@@ -81,19 +74,61 @@ export default {
         })
       })
     },
-    // 角色信息
-    systemRole({commit}) {
+    // 清空登录信息
+    clearLoginInfo({commit}) {
+      commit('loginInfo',{})
+      commit('roleMenu',{})
+      commit('roleAuth',{})
+      commit('roleInfo',[])
+    },
+    accountInit({ dispatch }) {
       return new Promise((resolve, reject) => {
-        userRole().then(res => {
-          commit('roleInfo', res)
+        dispatch('systemRole').then(res => {
+          dispatch('systemMenu')
+          dispatch('systemAuth')
+          resolve()
+        }).catch(err => reject(err))
+      })
+    },
+    // 修改角色
+    roleChange ({commit,dispatch}, {roleId}) {
+      return new Promise((resolve, reject) => {
+        roleChange(roleId).then(res => {
+          dispatch('systemMenu')
+          dispatch('systemAuth')
+          commit('roleChange',res)
           resolve(res)
         }).catch(err => {
           reject(err)
         })
       })
     },
-    roleChange ({commit}, {sysId, roleId}) {
-      commit('roleChange',{sysId, roleId})
+    // 角色信息
+    async systemRole({commit}) {
+      return new Promise((resolve, reject) => {
+        userRole().then(res => {
+          commit('roleInfo', res)
+          resolve(res)
+        }).catch(err => reject(err))
+      })
+    },
+    // 系统菜单信息
+    systemMenu({commit}) {
+      return new Promise((resolve, reject) => {
+        userMenu().then(res => {
+          commit('roleMenu', res)
+          resolve(res)
+        }).catch(err => reject(err))
+      })
+    },
+    // 系统权限信息
+    systemAuth({commit}) {
+      return new Promise((resolve, reject) => {
+        userAuth().then(res => {
+          commit('roleAuth', res)
+          resolve(res)
+        }).catch(err => reject(err))
+      })
     }
   }
 }

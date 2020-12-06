@@ -1,9 +1,8 @@
 <template>
   <div class="app-draw-container">
-    <div class="app-container-one-row">
+    <div class="app-ext-row">
       <vxe-table
         ref="systemChangeRoleTable"
-        highlight-current-row
         @cell-click ='changeChecked'
         :row-style = 'rowStyleSet'
         :data="sysRoleList">
@@ -12,7 +11,7 @@
         <vxe-table-column field="roleName" title="角色名称"></vxe-table-column>
       </vxe-table>
     </div>
-    <vxe-button @click="changeRole" type="submit" status="primary" :style='buttonClass' :loading='loading'>切换角色</vxe-button>
+    <vxe-button @click="changeRole" type="submit" status="primary" class="app-one-row" :loading='loading'>切换角色</vxe-button>
   </div>
 </template>
 <script>
@@ -28,10 +27,6 @@ export default {
     return {
       hightLightStyle: {
         color: 'red'
-      },
-      buttonClass: {
-        width: '100%',
-        height: '40px'
       },
       loading: false
     }

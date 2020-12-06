@@ -1,21 +1,15 @@
 
 .app-container {
-  $length-bar: 40px;
 
   height: 100%;
 
   .container-header {
-    background-color: $color-navajo-white;
-    height: $length-bar;
-    line-height: $length-bar;
+    background-color: $app-color-bar-back;
     display: flex;
-    div {
-      text-align: center;
-    }
 
     .info {
-      width: 2 * $length-bar;
-      border: $color-floral-white 1px solid;
+      width: 2 * $app-length-row;
+      border: $app-color-border-button1 1px solid;
       border-radius: 20px;
     }
 
@@ -27,16 +21,13 @@
   .container-main {
     height: calc(100vh - 80px);
     overflow: auto;
-    background-color: $color-floral-white;
+    background-color: $app-color-main-back;
   }
 
   .container-footer {
-    background-color: $color-navajo-white;
-    height: $length-bar;
-    line-height: $length-bar;
+    background-color: $app-color-bar-back;
+
+
   }
 
-  .app-container-one-row {
-    height: calc(100% - 40px);
-  }
 }

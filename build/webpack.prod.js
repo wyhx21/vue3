@@ -13,7 +13,8 @@ module.exports = merge(common, {
     new TerserJSPlugin({}),
     new webpack.DefinePlugin({
       AXIOS_BASE_PATH: JSON.stringify('/api'),
-      AXIOS_TIME_OUT: JSON.stringify('5000')
+      AXIOS_TIME_OUT: JSON.stringify('5000'),
+      AXIOS_HEADER_DEVICE: JSON.stringify('H5')
     })
   ]
 })

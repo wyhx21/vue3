@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <div class="container-header">
+    <div class="container-header app-one-row">
       <div class="info">
         {{userName}}
       </div>
@@ -8,9 +8,9 @@
       <div class="info" @click="showRoleInfo">{{roleName}}</div>
     </div>
     <div class="container-main">
-      
+      <vxe-input v-model="inputa" placeholder="请输入用户名" clearable/>
     </div>
-    <div class="container-footer">
+    <div class="container-footer app-one-row">
       footer
     </div>
 
@@ -29,7 +29,7 @@ export default {
   },
   computed: {
     ...mapGetters('account',[
-      'userName','roleName', 'system'
+      'userName','roleName', 'system','roleSize'
     ]),
     rowClass() {
       return `app-draw-row-bottom-${this.roleShow ? 'show':'hidden'}`
@@ -38,25 +38,25 @@ export default {
   data() {
     return {
       bjShow: false,
-      roleShow: false
+      roleShow: false,
+      inputa:'aaa'
     }
   },
   mounted() {
-    this.getRoleInfo()
+    this.accountInit().then(() => {}).catch(() => {})
   },
   methods: {
-    ...mapActions('account',['systemRole']),
+    ...mapActions('account',['accountInit']),
     hiddenChangeRole () {
       this.bjShow = false
       this.roleShow = false
     },
     showRoleInfo() {
-      this.$refs.systemChangeRole.initChecked()
-      this.bjShow = true
-      this.roleShow = true
-    },
-    getRoleInfo() { // 获取角色信息
-      this.systemRole().then(() => {}).catch(() => {})
+      if(this.roleSize > 1) {
+        this.$refs.systemChangeRole.initChecked()
+        this.bjShow = true
+        this.roleShow = true
+      }
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <div class="container-header app-one-row">
-      <div class="info">
+      <div class="info" @click="showUserInfo">
         {{userName}}
       </div>
       <div class="title">{{system['value']}}</div>
@@ -14,31 +14,40 @@
       footer
     </div>
 
-    <div class="app-draw-row" :class="rowClass">
-      <change-role @submit='hiddenChangeRole' ref='systemChangeRole'/>
+    <div class="app-draw-row" :class="roleInfoClass">
+      <app-change-role @submit='hiddenBj' ref='systemChangeRole'/>
     </div>
-    <span class="app-bj" @click="hiddenChangeRole" v-if="bjShow"></span>
+
+    <div class="app-draw-col" :class="userInfoClass">
+      <app-user-info @submit= 'hiddenBj'/>
+    </div>
+    <span class="app-bj" @click="hiddenBj" v-if="bjShow"></span>
   </div>
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import ChangeRole from '@com/system/ChangeRole.vue';
+import appChangeRole from '@com/system/ChangeRole.vue';
+import appUserInfo from '@com/system/UserInfo.vue';
 export default {
   components: {
-    ChangeRole
+    appChangeRole,appUserInfo
   },
   computed: {
     ...mapGetters('account',[
       'userName','roleName', 'system','roleSize'
     ]),
-    rowClass() {
+    roleInfoClass() {
       return `app-draw-row-bottom-${this.roleShow ? 'show':'hidden'}`
+    },
+    userInfoClass() {
+      return `app-draw-col-left-${this.userInfoShow ? 'show':'hidden'}`
     }
   },
   data() {
     return {
       bjShow: false,
       roleShow: false,
+      userInfoShow: false,
       inputa:'aaa'
     }
   },
@@ -47,9 +56,10 @@ export default {
   },
   methods: {
     ...mapActions('account',['accountInit']),
-    hiddenChangeRole () {
+    hiddenBj () {
       this.bjShow = false
       this.roleShow = false
+      this.userInfoShow = false
     },
     showRoleInfo() {
       if(this.roleSize > 1) {
@@ -57,6 +67,10 @@ export default {
         this.bjShow = true
         this.roleShow = true
       }
+    },
+    showUserInfo() {
+      this.bjShow = true
+      this.userInfoShow = true
     }
   }
 }

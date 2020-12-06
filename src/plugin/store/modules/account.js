@@ -1,4 +1,4 @@
-import { login, userRole,userMenu,userAuth,roleChange } from '@axios/system/account.js'
+import { login, userRole,userMenu,userAuth,roleChange,userLogout } from '@axios/system/account.js'
 // import { filterParam } from '@utils/array.js'
 export default {
   namespaced: true,
@@ -44,6 +44,9 @@ export default {
       return res
     },
     roleSize: (state,getters) => getters.sysRoleList.length,
+    roleInfoList: (state, getters) => {
+      return [getters.userName, getters.system['value'], getters.roleName]
+    }
   },
   mutations: {
     // 登录信息
@@ -74,6 +77,16 @@ export default {
         })
       })
     },
+    logOut({commit,dispatch}) {
+      return new Promise((resolve, reject) => {
+        userLogout().then(res => {
+          dispatch('clearLoginInfo')
+          resolve(res)
+        }).catch(err => {
+          reject(err)
+        })
+      })
+    },
     // 清空登录信息
     clearLoginInfo({commit}) {
       commit('loginInfo',{})
@@ -81,6 +94,7 @@ export default {
       commit('roleAuth',{})
       commit('roleInfo',[])
     },
+    // 初始化数据
     accountInit({ dispatch }) {
       return new Promise((resolve, reject) => {
         dispatch('systemRole').then(res => {
@@ -104,7 +118,7 @@ export default {
       })
     },
     // 角色信息
-    async systemRole({commit}) {
+    systemRole({commit}) {
       return new Promise((resolve, reject) => {
         userRole().then(res => {
           commit('roleInfo', res)

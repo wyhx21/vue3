@@ -4,7 +4,7 @@
   background: url('@img/01.jpg');
   
   .login-form {
-    width: 260px;
+    width: $app-model-box-width - 40px;
     height: 210px;
     border-radius: 20px;
     padding: 20px;

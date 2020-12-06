@@ -9,3 +9,5 @@ export const userMenu = () => axios.doGet('/system/menu/roleMenu')
 export const userAuth = () => axios.doGet('/system/menu/roleAuth')
 // 切换角色
 export const roleChange = (roleId) => axios.doGet(`/system/role/change/${roleId}`)
+// 切换角色
+export const userLogout = () => axios.doGet(`/system/user/logout`)

@@ -15,6 +15,7 @@
   </div>
 </template>
 <script>
+import { Confirm } from '@vxe/index.js'
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
@@ -34,14 +35,16 @@ export default {
   methods: {
     ...mapActions('account',['roleChange']),
     changeRole() {
-      let row = this.$refs.systemChangeRoleTable.getRadioRecord();
-      this.loading = true
-      this.roleChange(row).then(res => {
-        this.loading = false
-        this.$emit('submit')
-      }).catch(err => {
-        this.loading = false
-      })
+      Confirm('您确定切换该角色?').then(res => {
+        let row = this.$refs.systemChangeRoleTable.getRadioRecord();
+        this.loading = true
+        this.roleChange(row).then(res => {
+          this.loading = false
+          this.$emit('submit')
+        }).catch(err => {
+          this.loading = false
+        })
+      }).catch(err=> {})
     },
     initChecked() {
       let checkedRow = this.sysRoleList.filter(item => item['roleId'] == this.roleId)[0]

@@ -14,6 +14,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import { Confirm } from '@vxe/index.js'
+import { toLogin } from '@router/routerHelper.js'
 export default {
   computed: {
     ...mapGetters('account',[
@@ -32,7 +33,7 @@ export default {
         this.loading = true
         this.logOut().then(res => {
           this.$emit('submit')
-          this.$router.push('/login')
+          toLogin()
         }).catch(err ={})
       }).catch(err => {})
     }

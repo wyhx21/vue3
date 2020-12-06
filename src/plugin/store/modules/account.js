@@ -46,6 +46,9 @@ export default {
     roleSize: (state,getters) => getters.sysRoleList.length,
     roleInfoList: (state, getters) => {
       return [getters.userName, getters.system['value'], getters.roleName]
+    },
+    roleMenu: (state) => {
+      return state.roleMenu['children']
     }
   },
   mutations: {

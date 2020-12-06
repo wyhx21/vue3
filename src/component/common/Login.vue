@@ -19,6 +19,7 @@
 
 <script>
 import { mapActions } from 'vuex';
+import { toMainPage } from '@router/routerHelper.js'
 export default {
   data() {
     return {
@@ -36,7 +37,7 @@ export default {
         passWord: this.passWord
       }).then(res => {
         this.loading = false
-        this.$router.push('/container')
+        toMainPage()
       })
       .catch(error => {
         this.loading = false

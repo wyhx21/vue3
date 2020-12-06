@@ -4,10 +4,17 @@ $app-color-bar-back: rgba(255,222,173,1);
 $app-color-main-back:rgba(255,250,240);
 $app-color-bj-back: rgba(0,0,0,.3);
 $app-color-white-back: rgba(255,255,255,1);
+$app-color-msg-back:rgba(245,245,245,0.3);
+$app-color-cur-menu-back:rgba(222,222,222,0.8);
 
+$app-color-link-base:  #409eff;
+$app-color-link-active: #e6a23c;
+$app-color-link-hover: #f56c6c;
 // border
 $app-color-border-button1:rgba(255,250,240);
+$app-color-border-msg:$app-color-bar-back;
 
 // length
 $app-model-box-width: 300px;
 $app-length-row:40px;
+$app-height-msg:30px;

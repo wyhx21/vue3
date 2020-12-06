@@ -10,7 +10,7 @@
     .info {
       width: 2 * $app-length-row;
       border: $app-color-border-button1 1px solid;
-      border-radius: 20px;
+      border-radius: $app-length-row / 2;
     }
 
     .title {
@@ -21,12 +21,16 @@
   .container-main {
     height: calc(100vh - 80px);
     overflow: auto;
-    background-color: $app-color-main-back;
   }
 
   .container-footer {
-    background-color: $app-color-bar-back;
-
-
+    display: flex;
+    .item {
+      flex:1;
+      margin: 0;
+      border: $app-color-border-button1 1px solid;
+      background-color: $app-color-bar-back;
+      border-radius: 10px;
+    }
   }
 }

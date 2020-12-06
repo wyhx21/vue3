@@ -40,22 +40,22 @@ html,body,#app {
   }
 
   .app-draw-col-left-show {
-    transition: left .5s ease-in;
+    transition: left .3s ease-in;
     left: 0;
   }
 
   .app-draw-col-left-hidden {
-    transition: left .5s ease-out;
+    transition: left .3s ease-out;
     left: -60vw;
   }
 
   .app-draw-col-right-show {
-    transition: right .5s ease-in;
+    transition: right .3s ease-in;
     right: 0;
   }
 
   .app-draw-col-right-hidden {
-    transition: right .5s ease-out;
+    transition: right .3s ease-out;
     right: -60vw;
   }
 
@@ -71,22 +71,22 @@ html,body,#app {
   }
 
   .app-draw-row-bottom-show {
-    transition: bottom .5s ease-in;
+    transition: bottom .3s ease-in;
     bottom: 0;
   }
 
   .app-draw-row-bottom-hidden {
-    transition: bottom .5s ease-out;
+    transition: bottom .3s ease-out;
     bottom: -60vh;
   }
 
   .app-draw-row-top-show {
-    transition: top .5s ease-in;
+    transition: top .3s ease-in;
     top: 0;
   }
 
   .app-draw-row-top-hidden {
-    transition: top .5s ease-out;
+    transition: top .3s ease-out;
     top: -60vh;
   }
 
@@ -99,5 +99,23 @@ html,body,#app {
     height: $app-length-row;
     line-height: $app-length-row;
     text-align: center;
+  }
+
+  .app-link{
+    color:$app-color-link-base;
+
+    &:active {
+      color: $app-color-link-active;
+    }
+
+    &:hover {
+      color: $app-color-link-hover;
+    }
+  }
+
+  .app-current-menu {
+    background-color: $app-color-cur-menu-back;
+    border-radius:.5em;
+    display: inline-block;
   }
 }

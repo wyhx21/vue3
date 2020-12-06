@@ -1,0 +1,30 @@
+
+.app-messager{
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: $app-color-main-back;
+
+  .msg-item{
+    margin: $app-length-row/2;
+    padding: $app-length-row/4;
+    border: $app-color-border-msg 2px solid;
+    background-color:$app-color-msg-back;
+    border-radius: $app-length-row/4;
+  }
+
+  .msg-title {
+    height: $app-height-msg;
+    line-height: $app-height-msg;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  .msg-content {
+    text-indent: 2em;
+    font-size: 1em;
+  }
+}

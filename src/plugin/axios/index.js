@@ -1,6 +1,6 @@
 import axiosSource from 'axios';
 import store from '@store/index.js'
-import Router from '@router/index.js'
+import { toLogin } from '@router/routerHelper.js'
 import { Message } from '@vxe/index.js';
 
 function errorLog(err){
@@ -47,7 +47,7 @@ axios.interceptors.response.use(
         case '000000': return dataAxios.data
         case '200001': {
           store.dispatch('account/clearLoginInfo')
-          Router.push('/login')
+          toLogin()
           return Promise.reject(dataAxios)
         }
         default: {

@@ -25,7 +25,6 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import appUserInfo from '@com/system/UserInfo.vue';
-// import appMenuInfo from '@com/system/MenuInfo.vue';
 import { toMainPage } from '@router/routerHelper.js';
 import { Confirm } from '@utils/messagerUtil.js';
 export default {

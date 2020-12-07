@@ -36,7 +36,6 @@ module.exports = {
       '@public': path.resolve(__dirname,'../src/public'),
       '@axios': path.resolve(__dirname,'../src/plugin/axios'),
       '@router': path.resolve(__dirname,'../src/plugin/router'),
-      '@vxe': path.resolve(__dirname,'../src/plugin/vxe'),
       '@utils': path.resolve(__dirname,'../src/plugin/utils')
     }
   },

@@ -33,20 +33,18 @@ export default {
     sysRoleList: state => {
       const res = []
       for(let _system of state.roleInfo) {
-        let sysId = _system['code']
         let sysName = _system['value']
         for(let _role of _system['children']) {
           let roleId = _role['code']
           let roleName = _role['value']
-          res.push({sysId,sysName,roleId,roleName})
+          let name = `${sysName}-${roleName}`
+          let color = state.userInfo.roleId == roleId ? '#F00' : ''
+          res.push({roleId,name,color})
         }
       }
       return res
     },
     roleSize: (state,getters) => getters.sysRoleList.length,
-    roleInfoList: (state, getters) => {
-      return [getters.userName, getters.system['value'], getters.roleName]
-    },
     roleMenu: (state) => {
       return state.roleMenu['children']
     }

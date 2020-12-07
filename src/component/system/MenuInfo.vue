@@ -1,6 +1,6 @@
 <template>
   <div class="app-draw-container">
-    <vxe-table
+    <!-- <vxe-table
       :tree-config="treeConfig"
       :row-id='id'
       :data="roleMenu">
@@ -10,7 +10,7 @@
           <span v-else class="app-link" :class="row['id'] == currentPage ? 'app-current-menu' : '' " @click="consoleRow(row)">{{row['menuName']}}</span>
         </template>
       </vxe-table-column>
-    </vxe-table>
+    </vxe-table> -->
   </div>
 </template>
 

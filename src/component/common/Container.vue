@@ -15,70 +15,61 @@
       <div class="app-link item" @click ='showPageInfo'>选择页面</div>
     </div>
 
-    <div class="app-draw-row" :class="roleInfoClass"><app-change-role @submit='hiddenBj' ref='systemChangeRole'/></div>
-    <div class="app-draw-col" :class="userInfoClass"><app-user-info @submit= 'hiddenBj'/></div>
-    <div class="app-draw-col" :class="menuInfoClass"><app-menu-info @submit= 'hiddenBj'/></div>
-    <span class="app-bj" @click="hiddenBj" v-if="bjShow"/>
+    <van-action-sheet v-model:show="roleShow" :actions="sysRoleList" cancel-text='取消' description='点击切换角色' 
+      @select="changeRole"/>
+    <van-popup v-model:show="userInfoShow" position="left" round :style="{ height: '100%',width:'50%'}">
+      <app-user-info/>
+    </van-popup>
   </div>
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import appChangeRole from '@com/system/ChangeRole.vue';
 import appUserInfo from '@com/system/UserInfo.vue';
-import appMenuInfo from '@com/system/MenuInfo.vue';
-import { toMainPage } from '@router/routerHelper.js'
+// import appMenuInfo from '@com/system/MenuInfo.vue';
+import { toMainPage } from '@router/routerHelper.js';
+import { Confirm } from '@utils/messagerUtil.js';
 export default {
   components: {
-    appChangeRole,appUserInfo,appMenuInfo
+    appUserInfo
   },
   computed: {
     ...mapGetters('account',[
-      'userName','roleName', 'system','roleSize'
+      'userName','roleName', 'system','roleSize','sysRoleList'
     ]),
-    roleInfoClass() {
-      return `app-draw-row-bottom-${this.roleShow ? 'show':'hidden'}`
-    },
-    userInfoClass() {
-      return `app-draw-col-left-${this.userInfoShow ? 'show':'hidden'}`
-    },
-    menuInfoClass() {
-      return `app-draw-col-left-${this.menuInfoShow ? 'show':'hidden'}`
-    }
   },
   data() {
     return {
-      bjShow: false,
       roleShow: false,
       userInfoShow: false,
-      menuInfoShow: false,
-      inputa:'aaa'
+      menuInfoShow: false
     }
   },
   mounted() {
     this.accountInit().then(() => {}).catch(() => {})
   },
   methods: {
-    ...mapActions('account',['accountInit']),
-    hiddenBj () {
-      this.bjShow = false
-      this.roleShow = false
-      this.userInfoShow = false
-      this.menuInfoShow = false
-    },
+    ...mapActions('account',['accountInit','roleChange']),
     showRoleInfo() {
       if(this.roleSize > 1) {
-        this.$refs.systemChangeRole.initChecked()
-        this.bjShow = true
         this.roleShow = true
       }
     },
     showUserInfo() {
-      this.bjShow = true
       this.userInfoShow = true
     },
     showPageInfo() {
-      this.bjShow = true
       this.menuInfoShow = true
+    },
+    changeRole (row) {
+      Confirm({message:'您确定切换该角色?'}).then(res => {
+        this.roleChange(row).then(res => {
+          this.roleShow = false
+        }).catch(err => {
+          this.roleShow = false
+        })
+      }).catch(err=> {
+        this.roleShow = false
+      })
     },
     toHome() {
       toMainPage()

@@ -2,7 +2,8 @@ html,body,#app {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: $vxe-font-family;
+  background-color: $app-main-back-color;
+  font-family: $app-font-family;
 
   .app-row {
     width: 100%;
@@ -32,7 +33,7 @@ html,body,#app {
     display: block;
     margin: 0;
     padding: 0;
-    background-color: $app-color-white-back;
+    background-color: $app-color-white;
     top: 0;
     height: 100vh;
     width: 60vw;
@@ -64,7 +65,7 @@ html,body,#app {
     display: block;
     margin: 0;
     padding: 0;
-    background-color: $app-color-white-back;
+    background-color: $app-color-white;
     height: 60vh;
     width: 100vw;
     z-index: 1000;
@@ -88,10 +89,6 @@ html,body,#app {
   .app-draw-row-top-hidden {
     transition: top .3s ease-out;
     top: -60vh;
-  }
-
-  .app-ext-row {
-    height: calc(100% - 40px);
   }
 
   .app-one-row {
@@ -118,4 +115,8 @@ html,body,#app {
     border-radius:.5em;
     display: inline-block;
   }
+}
+
+.app-ext-row {
+  height: calc(100% - 40px);
 }

@@ -1,15 +1,13 @@
 <template>
-  <div class="app-draw-container">
-    <div class="app-ext-row">
-      <vxe-table
-        :data="roleInfoList">
-        <vxe-table-column title="用户信息">
-          <template #default="{ row }">{{row}}</template>
-        </vxe-table-column>
-      </vxe-table>
-    </div>
-    <vxe-button @click="exitLogin" type="submit" status="primary" class="app-one-row" :loading='loading'>退出登录</vxe-button>
+  <div :style="{height: 'calc(100% - 56px)'}">
+    <van-divider dashed :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">用户</van-divider>
+    <div class="app-one-row">{{userName}}</div>
+    <van-divider dashed :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">系统</van-divider>
+    <div class="app-one-row">{{system['value']}}</div>
+    <van-divider dashed :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">角色</van-divider>
+    <div class="app-one-row">{{roleName}}</div>
   </div>
+  <van-button @click="exitLogin" type="primary" class="app-one-row" :loading='loading'>退出登录</van-button>
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex';
@@ -18,7 +16,7 @@ import { toLogin } from '@router/routerHelper.js'
 export default {
   computed: {
     ...mapGetters('account',[
-      'roleInfoList'
+      'userName','system','roleName'
     ]),
   },
   data() {
@@ -32,7 +30,6 @@ export default {
       Confirm({message:'您确定退出登录?'}).then(res => {
         this.loading = true
         this.logOut().then(res => {
-          this.$emit('submit')
           toLogin()
         }).catch(err ={})
       }).catch(err => {})

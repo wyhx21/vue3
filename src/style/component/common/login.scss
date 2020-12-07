@@ -1,26 +1,13 @@
 
-.app-login {
+.login-form1 {
   height: 100%;
   background: url('@img/01.jpg');
-  
-  .login-form {
-    width: $app-model-box-width - 40px;
-    height: 210px;
+  .van-form {
+    position: absolute;
+    width: 100%;
+    margin-top: 30vh;
     border-radius: 20px;
-    padding: 20px;
     background-color: $app-color-7-back;
-    position: relative;
-    left: calc(50vw - 150px);
-    top: calc(40vh - 125px);
-    div {
-      width: 100%;
-    }
-
-    p {
-      height: 15px;
-      display: block;
-      margin: 0px;
-      padding: 0px;
-    }
+    // border: 2px solid red;
   }
 }

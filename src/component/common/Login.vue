@@ -1,19 +1,27 @@
 <template>
-  <div class="app-login">
-    <div class="login-form">
-      <p/>
-      <div>
-        <vxe-input v-model="userCode" placeholder="请输入用户名" clearable/>
+  <div class="login-form1">
+    <van-form @submit="onSubmit">
+      <van-field
+        v-model="userCode"
+        name="userCode"
+        label="用户名"
+        placeholder="用户名"
+        :rules="rules.userCode"
+      />
+      <van-field
+        v-model="passWord"
+        type="password"
+        name="passWord"
+        label="密码"
+        placeholder="密码"
+        :rules="rules.passWord"
+      />
+      <div style="margin: 16px;">
+        <van-button round block type="primary" loading-text="登录中..." native-type="submit" :loading='loading'>
+          登录
+        </van-button>
       </div>
-      <p/><p/>
-      <div>
-        <vxe-input v-model="passWord" type="password" placeholder="请输入密码" clearable/>
-      </div>
-      <p/><p/>
-      <div>
-        <vxe-button class="app-row" @click="login" type="submit" status="primary" :loading='loading'>登录</vxe-button>
-      </div>
-    </div>
+    </van-form>
   </div>
 </template>
 
@@ -25,17 +33,25 @@ export default {
     return {
       userCode: 'admin',
       passWord: 'admin',
-      loading: false
+      loading: false,
+      rules: {
+        userCode: [{
+          required: true,
+          message: '请填写用户名'
+        }],
+        passWord: [{
+          required: true,
+          message: '请填写密码'
+        }]
+      }
     }
   },
   methods: {
     ...mapActions('account',['loginSubmit']),
-    login(){
+    onSubmit(values) {
       this.loading = true
-      this.loginSubmit({
-        userCode: this.userCode,
-        passWord: this.passWord
-      }).then(res => {
+      this.loginSubmit(values)
+      .then(res => {
         this.loading = false
         toMainPage()
       })

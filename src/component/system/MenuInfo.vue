@@ -28,9 +28,9 @@ export default {
         line:true,
         trigger: 'row',
         accordion: true,
-        showIcon: false
+        showIcon: true
       },
-      currentPage: 300001001
+      currentPage: null
     }
   },
   methods: {

@@ -13,7 +13,7 @@
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import { Confirm } from '@vxe/index.js'
+import { Confirm } from '@utils/messagerUtil.js'
 import { toLogin } from '@router/routerHelper.js'
 export default {
   computed: {
@@ -29,7 +29,7 @@ export default {
   methods: {
     ...mapActions('account',['logOut']),
     exitLogin() {
-      Confirm('您确定退出登录?').then(res => {
+      Confirm({message:'您确定退出登录?'}).then(res => {
         this.loading = true
         this.logOut().then(res => {
           this.$emit('submit')

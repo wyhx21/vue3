@@ -1,22 +1,7 @@
 import axiosSource from 'axios';
 import store from '@store/index.js'
 import { toLogin } from '@router/routerHelper.js'
-import { Message } from '@vxe/index.js';
-
-function errorLog(err){
-  if (process.env.NODE_ENV === 'development') {
-    console.error(err.message, err)
-  }
-  Message({message:err.message,status: 'error'})
-}
-
-function infoLog({respCode,respMsg}){
-  if (process.env.NODE_ENV === 'development') {
-    Message({message:`respCode:${respCode},respMsg:${respMsg}`})
-  } else {
-    Message({message:`${respMsg}`})
-  }
-}
+import { infoLog,errorLog } from '@utils/messagerUtil.js'
 
 const axios = axiosSource.create({
   baseURL: AXIOS_BASE_PATH,

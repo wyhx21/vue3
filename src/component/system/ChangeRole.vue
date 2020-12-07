@@ -15,7 +15,7 @@
   </div>
 </template>
 <script>
-import { Confirm } from '@vxe/index.js'
+import { Confirm } from '@utils/messagerUtil.js'
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
@@ -35,7 +35,7 @@ export default {
   methods: {
     ...mapActions('account',['roleChange']),
     changeRole() {
-      Confirm('您确定切换该角色?').then(res => {
+      Confirm({message:'您确定切换该角色?'}).then(res => {
         let row = this.$refs.systemChangeRoleTable.getRadioRecord();
         this.loading = true
         this.roleChange(row).then(res => {

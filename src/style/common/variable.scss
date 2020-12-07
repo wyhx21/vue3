@@ -5,9 +5,7 @@ $app-font-family:-apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino 
 
 
 $app-color-bar-back: rgba(255,222,173,1);
-$app-color-main-back:rgba(255,250,240);
 $app-color-bj-back: rgba(0,0,0,.3);
-$app-color-msg-back:rgba(245,245,245,0.3);
 
 $app-color-link-base:  #409eff;
 $app-color-link-active: #e6a23c;
@@ -17,6 +15,4 @@ $app-color-border-button1:rgba(255,250,240);
 $app-color-border-msg:$app-color-bar-back;
 
 // length
-$app-model-box-width: 300px;
 $app-length-row:40px;
-$app-height-msg:30px;

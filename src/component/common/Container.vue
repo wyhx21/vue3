@@ -1,19 +1,24 @@
 <template>
   <div class="app-container">
-    <div class="container-header app-one-row">
-      <div class="app-link info" @click="showUserInfo">
-        {{userName}}
-      </div>
-      <div class="title">{{system['value']}}</div>
-      <div class="info" :class="roleSize > 1 ? 'app-link' : ''" @click="showRoleInfo">{{roleName}}</div>
+    <div>
+      <van-nav-bar left-arrow :title="system['value']" @click-left="goPrePage">
+        <template #left> <van-icon name="arrow-left" size="20"/>返回</template>
+        <template #right> {{roleName}} </template>
+      </van-nav-bar>
+      <van-notice-bar left-icon="volume-o" v-if="showNoticeMsg" :text="noticeMsg"/>
     </div>
+
     <div class="container-main">
       <router-view/>
     </div>
-    <div class="container-footer app-one-row">
-      <div class="app-link item" @click="toHome()">返回主页</div>
-      <div class="app-link item" @click ='showPageInfo'>选择页面</div>
-    </div>
+
+    <van-tabbar v-model="activeTab">
+      <van-tabbar-item @click="showUserInfo" icon="friends-o">用户</van-tabbar-item>
+      <van-tabbar-item icon="fire-o">主页</van-tabbar-item>
+      <van-tabbar-item icon="like-o">功能</van-tabbar-item>
+      <van-tabbar-item icon="chat-o">消息</van-tabbar-item>
+      <van-tabbar-item icon="setting-o" @click="showRoleInfo">设置</van-tabbar-item>
+    </van-tabbar>
 
     <van-action-sheet v-model:show="roleShow" :actions="sysRoleList" cancel-text='取消' description='点击切换角色' 
       @select="changeRole"/>
@@ -25,7 +30,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import appUserInfo from '@com/system/UserInfo.vue';
-import { toMainPage } from '@router/routerHelper.js';
+import { toMainPage,goBack } from '@router/routerHelper.js';
 import { Confirm } from '@utils/messagerUtil.js';
 export default {
   components: {
@@ -35,12 +40,17 @@ export default {
     ...mapGetters('account',[
       'userName','roleName', 'system','roleSize','sysRoleList'
     ]),
+    showNoticeMsg(){
+      return this.noticeMsg && this.noticeMsg.length > 0
+    }
   },
   data() {
     return {
       roleShow: false,
       userInfoShow: false,
-      menuInfoShow: false
+      menuInfoShow: false,
+      activeTab:0,
+      noticeMsg: '在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。'
     }
   },
   mounted() {
@@ -72,6 +82,9 @@ export default {
     },
     toHome() {
       toMainPage()
+    },
+    goPrePage() {
+      goBack()
     }
   }
 }

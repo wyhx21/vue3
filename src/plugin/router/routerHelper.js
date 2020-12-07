@@ -1,6 +1,14 @@
 import Router from '@router/index.js'
 
 // import { toLogin,toMainPage } from '@router/routerHelper.js'
-export const toLogin = () => Router.push('/login')
+const toLogin = () => Router.push('/login')
 
-export const toMainPage = () => Router.push('/container')
+const toMainPage = () => Router.push('/container')
+
+const goBack = () => window.history.length > 1 ? Router.go(-1) : Router.push('/container')
+
+export {
+  toLogin,
+  toMainPage,
+  goBack
+}

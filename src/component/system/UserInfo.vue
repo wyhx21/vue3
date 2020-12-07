@@ -7,7 +7,7 @@
     <van-divider dashed :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">角色</van-divider>
     <div class="app-one-row">{{roleName}}</div>
   </div>
-  <van-button @click="exitLogin" type="primary" class="app-one-row" :loading='loading'>退出登录</van-button>
+  <van-button @click="exitLogin" plain hairline type="primary" class="app-one-row" :loading='loading'>退出登录</van-button>
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex';

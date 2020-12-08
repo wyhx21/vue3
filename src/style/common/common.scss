@@ -4,37 +4,24 @@ html,body,#app {
   padding: 0;
   background-color: $app-main-back-color;
   font-family: $app-font-family;
+}
 
-  .app-bj {
-    position: fixed;
-    display: block;
-    margin: 0;
-    padding: 0;
-    background-color: $app-color-bj-back;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 999;
+
+.app-one-row {
+  width: 100%;
+  height: $app-length-row;
+  line-height: $app-length-row;
+  text-align: center;
+}
+
+.app-link{
+  color:$app-color-link-base;
+
+  &:active {
+    color: $app-color-link-active;
   }
 
-  .app-one-row {
-    width: 100%;
-    height: $app-length-row;
-    line-height: $app-length-row;
-    text-align: center;
+  &:hover {
+    color: $app-color-link-hover;
   }
-
-  .app-link{
-    color:$app-color-link-base;
-
-    &:active {
-      color: $app-color-link-active;
-    }
-
-    &:hover {
-      color: $app-color-link-hover;
-    }
-  }
-
 }

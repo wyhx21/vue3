@@ -1,18 +1,12 @@
 // back color
+$app-font-family:-apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
 $app-main-back-color:#F5F5F5;
 $app-color-white: rgba(255,255,255,1);
-$app-font-family:-apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
-
-
-$app-color-bar-back: rgba(255,222,173,1);
-$app-color-bj-back: rgba(0,0,0,.3);
+$app-color-border-msg:$app-color-white;
 
 $app-color-link-base:  #409eff;
 $app-color-link-active: #e6a23c;
 $app-color-link-hover: #f56c6c;
-// border
-$app-color-border-button1:rgba(255,250,240);
-$app-color-border-msg:$app-color-bar-back;
 
 // length
 $app-length-row:40px;

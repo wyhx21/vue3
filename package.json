@@ -13,6 +13,8 @@
   "dependencies": {
     "axios": "^0.21.0",
     "es6-promise": "^4.2.8",
+    "qrcode": "^1.4.4",
+    "qrcode-with-logos": "^1.0.3",
     "vant": "^3.0.0-rc.2",
     "vue": "^3.0.3",
     "vue-router": "^4.0.0-rc.6",

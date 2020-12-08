@@ -31,7 +31,10 @@ export default {
         this.loading = true
         this.logOut().then(res => {
           toLogin()
-        }).catch(err ={})
+          this.loading = false
+        }).catch(err => {
+          this.loading = false
+        })
       }).catch(err => {})
     }
   }

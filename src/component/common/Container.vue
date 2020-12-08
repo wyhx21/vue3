@@ -14,8 +14,8 @@
 
     <van-tabbar v-model="activeTab">
       <van-tabbar-item @click="showUserInfo" icon="friends-o">用户</van-tabbar-item>
-      <van-tabbar-item icon="fire-o">主页</van-tabbar-item>
-      <van-tabbar-item icon="like-o">功能</van-tabbar-item>
+      <van-tabbar-item icon="fire-o" @click="toHome">主页</van-tabbar-item>
+      <van-tabbar-item icon="like-o" to="/container/menu">功能</van-tabbar-item>
       <van-tabbar-item icon="chat-o">消息</van-tabbar-item>
       <van-tabbar-item icon="setting-o" @click="showRoleInfo">设置</van-tabbar-item>
     </van-tabbar>

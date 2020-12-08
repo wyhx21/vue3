@@ -3,12 +3,14 @@ import store from '@store/index.js'
 import Login from '@com/common/Login.vue'
 import Container from '@com/common/Container.vue'
 import Messager from '@com/system/Messager.vue'
+import MenuInfo from '@com/system/MenuInfo.vue'
 
 const routes = [
   {path: '/', redirect: '/container'},
   { path: '/login', name: 'login', component: Login},
   { path: '/container', name: 'container', component: Container, children: [
     { path: '', name: 'messager', component: Messager},
+    { path: 'menu', name: 'menu', component: MenuInfo},
   ]},
 ]
 

@@ -11,7 +11,7 @@ const axios = axiosSource.create({
 axios.interceptors.request.use(
   config => {
     const token = store.getters['account/token']
-    config.headers['device'] = AXIOS_HEADER_DEVICE
+    config.headers['divide'] = AXIOS_HEADER_DIVIDE
     config.headers['authToken'] = token
     return config
   },

@@ -37,9 +37,8 @@ export default {
     appUserInfo
   },
   computed: {
-    ...mapGetters('account',[
-      'userName','roleName', 'system','roleSize','sysRoleList'
-    ]),
+    ...mapGetters('account',['userName']),
+    ...mapGetters('userRoleAuth',['roleName', 'system','roleSize','sysRoleList']),
     showNoticeMsg(){
       return this.noticeMsg && this.noticeMsg.length > 0
     }
@@ -57,7 +56,7 @@ export default {
     this.accountInit().then(() => {}).catch(() => {})
   },
   methods: {
-    ...mapActions('account',['accountInit','roleChange']),
+    ...mapActions('userRoleAuth',['accountInit','roleChange']),
     showRoleInfo() {
       if(this.roleSize > 1) {
         this.roleShow = true

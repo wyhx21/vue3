@@ -15,9 +15,8 @@ import { Confirm } from '@utils/messagerUtil.js'
 import { toLogin } from '@router/routerHelper.js'
 export default {
   computed: {
-    ...mapGetters('account',[
-      'userName','system','roleName'
-    ]),
+    ...mapGetters('account',['userName']),
+    ...mapGetters('userRoleAuth',['system','roleName']),
   },
   data() {
     return {

@@ -31,7 +31,8 @@ axios.interceptors.response.use(
       switch (respCode) {
         case '000000': return dataAxios.data
         case '200001': {
-          store.dispatch('account/clearLoginInfo')
+          store.commit('account/loginInfo')
+          store.commit('account/token')
           toLogin()
           return Promise.reject(dataAxios)
         }

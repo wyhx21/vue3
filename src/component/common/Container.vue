@@ -89,3 +89,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  @import '@style/component/common/container.scss';
+</style>

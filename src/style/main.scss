@@ -1,6 +1,29 @@
-@import '@style/common/variable.scss';
-@import '@style/common/common.scss';
+@import '@style/variable.scss';
 
-@import '@style/component/common/login.scss';
-@import '@style/component/common/container.scss';
-@import '@style/component/common/messager.scss';
+html,body,#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: $app-main-back-color;
+  font-family: $app-font-family;
+}
+
+
+.app-one-row {
+  width: 100%;
+  height: $app-length-row;
+  line-height: $app-length-row;
+  text-align: center;
+}
+
+.app-link{
+  color:$app-color-link-base;
+
+  &:active {
+    color: $app-color-link-active;
+  }
+
+  &:hover {
+    color: $app-color-link-hover;
+  }
+}

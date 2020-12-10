@@ -48,3 +48,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  @import '@style/component/common/login.scss';
+</style>

@@ -5,6 +5,7 @@ const webpack = require('webpack')
 
 module.exports = merge(common, {
   mode: 'development',
+  devtool: 'inline-source-map',
   plugins: [
     new webpack.DefinePlugin({
       AXIOS_BASE_PATH: JSON.stringify('/api'),
@@ -12,7 +13,6 @@ module.exports = merge(common, {
       AXIOS_HEADER_DIVIDE: JSON.stringify('H5')
     })
   ],
-  devtool: 'inline-source-map',
   devServer: {
     contentBase: path.join(__dirname, '../dist'),
     compress: true,

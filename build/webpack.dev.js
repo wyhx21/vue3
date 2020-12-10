@@ -12,6 +12,7 @@ module.exports = merge(common, {
       AXIOS_HEADER_DIVIDE: JSON.stringify('H5')
     })
   ],
+  devtool: 'inline-source-map',
   devServer: {
     contentBase: path.join(__dirname, '../dist'),
     compress: true,

@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const EncodingPlugin = require('webpack-encoding-plugin');
 const { VueLoaderPlugin } = require('vue-loader')
+const PUBLIC_PATH = '/h5/'
 
 module.exports = {
   entry: {
@@ -10,9 +11,9 @@ module.exports = {
   },
   output: {
     filename: 'js/[name].[contenthash].js',
-    path: path.join(__dirname, '../dist'),
+    path: path.join(__dirname, '../dist' + PUBLIC_PATH),
     assetModuleFilename: 'images/[hash][ext][query]',
-    publicPath: '/'
+    publicPath: PUBLIC_PATH,
   },
   plugins: [
     new HtmlWebpackPlugin({

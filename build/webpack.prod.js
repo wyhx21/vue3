@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserJSPlugin = require('terser-webpack-plugin')
 const webpack = require('webpack')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = merge(common, {
   mode: 'production',
@@ -15,6 +16,7 @@ module.exports = merge(common, {
       AXIOS_BASE_PATH: JSON.stringify('/api'),
       AXIOS_TIME_OUT: JSON.stringify('5000'),
       AXIOS_HEADER_DIVIDE: JSON.stringify('H5')
-    })
+    }),
+    new BundleAnalyzerPlugin()
   ]
 })

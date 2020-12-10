@@ -2,9 +2,14 @@ const path = require('path')
 const common = require('./webpack.common.js')
 const { merge } = require('webpack-merge')
 const webpack = require('webpack')
+const PUBLIC_PATH = '/'
 
 module.exports = merge(common, {
   mode: 'development',
+  output: {
+    path: path.join(__dirname, '../dist' + PUBLIC_PATH),
+    publicPath: PUBLIC_PATH,
+  },
   devtool: 'inline-source-map',
   plugins: [
     new webpack.DefinePlugin({

@@ -74,7 +74,7 @@ export default {
         userRole().then(res => {
           commit('roleInfo', res)
           resolve(res)
-        }).catch(err => reject(err))
+        }).catch(err => {})
       })
     },
     // 系统菜单信息
@@ -83,7 +83,7 @@ export default {
         userMenu().then(res => {
           commit('roleMenu', res)
           resolve(res)
-        }).catch(err => reject(err))
+        }).catch(err => {})
       })
     },
     // 系统权限信息
@@ -92,7 +92,7 @@ export default {
         userAuth().then(res => {
           commit('roleAuth', res)
           resolve(res)
-        }).catch(err => reject(err))
+        }).catch(err => {})
       })
     }
   }

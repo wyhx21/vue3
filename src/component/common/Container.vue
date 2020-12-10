@@ -12,13 +12,14 @@
       <router-view/>
     </div>
 
-    <van-tabbar v-model="activeTab">
-      <van-tabbar-item @click="showUserInfo" icon="friends-o">用户</van-tabbar-item>
-      <van-tabbar-item icon="fire-o" @click="toHome">主页</van-tabbar-item>
-      <van-tabbar-item icon="like-o" to="/container/menu">功能</van-tabbar-item>
-      <van-tabbar-item icon="chat-o">消息</van-tabbar-item>
-      <van-tabbar-item icon="setting-o" @click="showRoleInfo">设置</van-tabbar-item>
-    </van-tabbar>
+    <div class="container-footer">
+      <van-tabbar v-model="activeTab">
+        <van-tabbar-item icon="chat-o" @click="toHome">主页</van-tabbar-item>
+        <van-tabbar-item icon="fire-o" to="/container/menu">功能</van-tabbar-item>
+        <van-tabbar-item icon="setting-o" @click="showRoleInfo">角色</van-tabbar-item>
+        <van-tabbar-item @click="showUserInfo" icon="friends-o">用户</van-tabbar-item>
+      </van-tabbar>
+    </div>
 
     <van-action-sheet v-model:show="roleShow" :actions="sysRoleList" cancel-text='取消' description='点击切换角色' 
       @select="changeRole"/>

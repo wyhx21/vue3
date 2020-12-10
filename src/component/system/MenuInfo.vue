@@ -1,32 +1,40 @@
 <template>
-  <div @click="createCode">点击生成</div>
-  <canvas id="app-menu-coder">
-  </canvas>
-    <div id="app-menu-image"></div>
+  <div>
+    <div v-for="item1 of roleMenu" :key="item1['id']">
+      <van-divider :style="style.divider" dashed>{{item1.menuName}}</van-divider>
+      <div v-for="item2 of item1['children']" :key="item2['id']">
+        <span class="app-one-row app-font-color-1">{{item2['menuName']}}</span>
+        <van-grid :column-num="3" :gutter="10">
+          <van-grid-item v-for="item3 of item2['children']" :key="item3['id']" icon="photo-o" :text="item3['menuName']" @click='menuClick' />
+        </van-grid>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import QrCodeWithLogo from 'qrcode-with-logos'
+import {mapGetters} from 'vuex'
 export default {
+  computed: {
+    ...mapGetters('userRoleAuth',['roleMenu']),
+  },
+  data() {
+    return {
+      style: {
+        divider: {
+          color: '#ccc',
+          borderColor: '#ccc',
+          fontSize:'.9em' 
+        }
+      }
+    }
+  },
   mounted() {
 
   },
   methods: {
-    createCode () {
-      console.log('a')
-      const myCanvas = document.getElementById('app-menu-coder')
-      this.$nextTick(() => {
-        new QrCodeWithLogo({
-          canvas: myCanvas,
-          width: 200,
-          download: false,
-          content: "http://192.168.43.249:9001",
-          nodeQrCodeOptions:{
-            margin:2,
-            errorCorrectionLevel:'Q'
-          }
-        }).toImage()
-      })
+    menuClick(event) {
+      console.log(event)
     }
   }
 }

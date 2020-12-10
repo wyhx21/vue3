@@ -60,6 +60,22 @@ module.exports = {
       {
         test: /\.(scss|sass)$/,
         use: [MiniCssExtractPlugin.loader,'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: 'less-loader',
+            options: {
+              lessOptions: {
+                modifyVars: {
+                  'divider-text-color': 'red',
+                  // hack:`true; @import "../src/style/common/vant-them.less";`
+                }
+              }
+            }
+          }
+        ]
       }
     ]
   },

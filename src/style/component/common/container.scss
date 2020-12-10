@@ -8,4 +8,15 @@
     flex: 1;
     overflow: auto;
   }
+
+  .container-footer {
+    height: 50px;
+  }
+}
+
+.app-font-color-1 {
+  color: $app-main-font-color1;
+  font-size: .9em;
+  text-align: left;
+  padding-left: $app-length-row;
 }

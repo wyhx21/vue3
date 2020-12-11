@@ -84,7 +84,18 @@ const doPost = (url, data = {}, params = {}) => {
   })
 }
 
+const fontPost = (url, data = {}, params = {}) => {
+  return axios({
+    method: 'post',
+    url,
+    data,
+    params,
+    baseURL: '/font',
+  })
+}
+
 export default {
   doGet,
-  doPost
+  doPost,
+  fontPost
 }

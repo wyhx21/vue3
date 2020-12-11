@@ -5,7 +5,7 @@
       <div v-for="item2 of item1['children']" :key="item2['id']">
         <span class="app-one-row app-font-color-1">{{item2['menuName']}}</span>
         <van-grid :column-num="3" :gutter="10">
-          <van-grid-item v-for="item3 of item2['children']" :key="item3['id']" icon="photo-o" :text="item3['menuName']" @click='menuClick' />
+          <van-grid-item v-for="item3 of item2['children']" :key="item3['id']" :icon="item3['menuIcon']" :text="item3['menuName']" :to="item3['menuUrl']" />
         </van-grid>
       </div>
     </div>

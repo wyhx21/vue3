@@ -29,10 +29,10 @@ module.exports = {
     alias: {
       '@img': path.resolve(__dirname,'../src/img'),
       '@style': path.resolve(__dirname,'../src/style'),
-      '@store': path.resolve(__dirname,'../src/plugin/store'),
+      '@store': path.resolve(__dirname,'../src/store'),
       '@com': path.resolve(__dirname,'../src/component'),
       '@public': path.resolve(__dirname,'../src/public'),
-      '@axios': path.resolve(__dirname,'../src/plugin/axios'),
+      '@axios': path.resolve(__dirname,'../src/axios'),
       '@router': path.resolve(__dirname,'../src/plugin/router'),
       '@utils': path.resolve(__dirname,'../src/plugin/utils')
     }

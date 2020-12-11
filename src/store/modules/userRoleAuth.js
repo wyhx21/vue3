@@ -40,6 +40,9 @@ export default {
     },
     roleSize: (_state,_getters) => _getters.sysRoleList.length,
     roleMenu: (_state) => {
+      if(!_state.roleMenu) {
+        return []
+      }
       return _state.roleMenu['children']
     }
   },

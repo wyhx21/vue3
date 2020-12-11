@@ -48,7 +48,6 @@ export default {
     return {
       roleShow: false,
       userInfoShow: false,
-      menuInfoShow: false,
       activeTab:0,
       noticeMsg: '在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。'
     }
@@ -65,9 +64,6 @@ export default {
     },
     showUserInfo() {
       this.userInfoShow = true
-    },
-    showPageInfo() {
-      this.menuInfoShow = true
     },
     changeRole (row) {
       Confirm({message:'您确定切换该角色?'}).then(res => {

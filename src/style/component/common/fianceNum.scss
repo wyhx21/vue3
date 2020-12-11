@@ -1,0 +1,22 @@
+@import '@style/variable.scss';
+
+.app-fiance-num {
+  color: $app-color-fiance-num;
+  margin-right: $app-color-fiance-margine;
+  margin-left: $app-color-fiance-margine;
+
+  .app-fiance_currency {
+    font-size: $app-font-fiance-currency;
+    font-weight: $app-color-fiance-weight;
+  }
+
+  .app_fiance_integer {
+    font-size: $app-font-fiance-integer;
+    font-weight: $app-color-fiance-weight;
+  }
+
+  .app_fiance_decimal {
+    font-size: $app-font-fiance-currency;
+    font-weight: $app-color-fiance-weight;
+  }
+}

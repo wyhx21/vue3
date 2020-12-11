@@ -3,15 +3,14 @@ import store from '@store/index.js'
 
 const routes = [
   {path: '/', redirect: '/container'},
-  { path: '/login', name: 'login', component: () => import('@com/common/Login.vue')},
+  { path: '/login', name: 'login', component: () => import('@com/system/Login.vue')},
   { path: '/container', name: 'container', component: () => import('@com/common/Container.vue'), 
     children: [
       { path: '', name: 'messager', component: () => import('@com/system/Messager.vue')},
       { path: 'menu', name: 'menu', component: () => import('@com/system/MenuInfo.vue')},
-
-      { path: 'base/product', name: 'base_product', component: () => import('@com/base/Product.vue')},
     ]
   },
+  { path: '/base/product', name: 'base_product', component: () => import('@com/base/Product.vue')},
 ]
 
 const route = createRouter({

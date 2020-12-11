@@ -4,7 +4,7 @@ import App from '@public/App.vue';
 import Store from '@store/index.js';
 import Router from '@router/index.js'
 import {Icon,Form,Button,Field,NoticeBar,NavBar,Tabbar,TabbarItem,
-  Popup,ActionSheet,Divider,Grid,GridItem} from 'vant';
+  Popup,ActionSheet,Divider,Grid,GridItem,Tag} from 'vant';
 
 const app = createApp(App)
 
@@ -21,6 +21,7 @@ app.use(ActionSheet)
 app.use(Divider)
 app.use(Grid)
 app.use(GridItem)
+app.use(Tag)
 
 app.use(Router)
 app.use(Store)

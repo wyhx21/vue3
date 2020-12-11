@@ -1,6 +1,6 @@
 <template>
   <div class="app-messager">
-    <div class="msg-item" v-for="item of msgList" :key="item.id">
+    <div class="app-data-item" v-for="item of msgList" :key="item.id">
       <span class="msg-title">{{item.title}}</span>
       <p class="msg-content">{{item.msg}}<span class="app-link" @click="toPage(item['link'])" v-if="item['link']">点击跳转>></span></p>
     </div>
@@ -28,5 +28,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import '@style/component/common/messager.scss';
+  @import '@style/component/system/messager.scss';
 </style>

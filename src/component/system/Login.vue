@@ -50,5 +50,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import '@style/component/common/login.scss';
+  @import '@style/component/system/login.scss';
 </style>

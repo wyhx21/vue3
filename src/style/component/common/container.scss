@@ -21,3 +21,11 @@
   text-align: left;
   padding-left: $app-length-row;
 }
+
+.app-data-item{
+  margin: $app-length-row/4 $app-length-row/2;
+  padding: $app-length-row/4;
+  border: $app-color-border-msg 2px solid;
+  border-radius: $app-length-row/4;
+  background-color: $app-color-white;
+}

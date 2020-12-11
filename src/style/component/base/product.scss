@@ -1,1 +1,21 @@
 @import '@style/variable.scss';
+
+.app-base-product {
+  .app-prod-name {
+    color: blue;
+    font-weight: 900;
+    margin: {
+      left: 10px;
+      right: 10px;
+    }
+  }
+  .app-prod-price {
+    display: inline-block;
+  }
+
+  .app-prod-remark {
+    color: #ccc;
+    font-size: .8em;
+    margin-left: 10px;
+  }
+}

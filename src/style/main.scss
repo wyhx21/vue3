@@ -19,11 +19,11 @@ html,body,#app {
 .app-link{
   color:$app-color-link-base;
 
-  &:active {
-    color: $app-color-link-active;
-  }
-
   &:hover {
     color: $app-color-link-hover;
+  }
+
+  &:active {
+    color: $app-color-link-active;
   }
 }

@@ -5,15 +5,12 @@
   height: 100%;
   overflow: auto;
 
-  .msg-title {
-    width: 100%;
+  h4 {
     text-align: center;
-    display: inline-block;
-    font-size: 1em;
-    font-weight: bold;
+    margin: 0;
   }
 
-  .msg-content {
+  P {
     text-indent: 2em;
     font-size: 1em;
   }

@@ -34,7 +34,9 @@ export default {
         }).catch(err => {
           this.loading = false
         })
-      }).catch(err => {})
+      }).catch(err => {
+        this.loading = false
+      })
     }
   }
 }

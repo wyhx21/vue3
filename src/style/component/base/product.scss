@@ -1,23 +1,44 @@
 @import '@style/variable.scss';
 
-.app-base-product {
-  .app-prod-name {
-    color: blue;
-    font-weight: 900;
-    margin: {
-      left: 10px;
-      right: 10px;
+.app-product-form {
+  .app-button {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+
+    button {
+      margin-top: 5px;
     }
   }
-  .app-prod-price {
+}
+
+.app-product-search {
+  height: $page-search-height;
+  line-height: $page-search-height;
+  background-color: $app-color-white;
+  text-align: center;
+
+  span {
     display: inline-block;
+    margin-left: $page-search-height / 2;
+    margin-right: $page-search-height / 2;
+  }
+}
+.app-product-container {
+  height: calc(100% - 30px);
+  overflow: auto;
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    td {
+      width: 35%;
+      text-align: left;
+    }
   }
 
-  .app-prod-remark {
-    font-style: italic;
-    text-indent: 2em;
-    color: #ccc;
-    font-size: .8em;
-    margin-left: 10px;
+  .app-prod-name {
+    color: red;
+    font-weight: 900;
   }
 }

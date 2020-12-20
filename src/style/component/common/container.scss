@@ -29,3 +29,21 @@
   border-radius: $app-length-row/4;
   background-color: $app-color-white;
 }
+
+.app-data-detail {
+  margin: $app-length-row/4 $app-length-row/2;
+  padding: $app-length-row/4;
+  border: $app-color-border-msg 2px solid;
+  border-radius: $app-length-row/4;
+  background-color: $app-color-white;
+  height: calc(100% - 44px);
+  overflow: auto;
+}
+
+.app-table-lable4 {
+  width: $app-length-row * 2;
+  min-width: $app-length-row * 2;
+  max-width: $app-length-row * 2;
+  text-align: center;
+  line-height: $app-length-row;
+}

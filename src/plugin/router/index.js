@@ -10,7 +10,9 @@ const routes = [
       { path: 'menu', name: 'menu', component: () => import('@com/system/MenuInfo.vue')},
     ]
   },
-  { path: '/base/product', name: 'base_product', component: () => import('@com/base/Product.vue')},
+  { path: '/base/product', name: 'base_product', component: () => import('@com/base/Product/Index.vue')},
+  { path: '/base/productDetail', name: 'base_product_detail', component: () => import('@com/base/Product/ProdDetail.vue')},
+  { path: '/base/productEditor', name: 'base_product_editor', component: () => import('@com/base/Product/ProdEditor.vue')},
 ]
 
 const route = createRouter({

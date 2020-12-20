@@ -13,7 +13,7 @@ const store = createStore({
   plugins: [
     new VuexPersistence({
       storage: window.localStorage,
-      modules: ['account']
+      modules: ['account','userRoleAuth']
     }).plugin
   ]
 });

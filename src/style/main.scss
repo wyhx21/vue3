@@ -1,5 +1,16 @@
 @import '@style/variable.scss';
 
+.van-form {
+  .van-dropdown-menu {
+    width: 100%;
+    height: 100%;
+    
+  }
+  .van-dropdown-menu__bar {
+    height: 100%;
+  }
+}
+
 html,body,#app {
   height: 100%;
   margin: 0;
@@ -18,6 +29,28 @@ html,body,#app {
 
 .app-link{
   color:$app-color-link-base;
+
+  &:hover {
+    color: $app-color-link-hover;
+  }
+
+  &:active {
+    color: $app-color-link-active;
+  }
+}
+
+.app-data-editor {
+  background-color:  $app-color-link-base;
+  color: $app-color-white;
+  border-radius: 10px;
+  text-align: center;
+  position: fixed;
+  display: inline-block;
+  width: 50px;
+  height:$page-search-height;
+  line-height: $page-search-height;
+  bottom: 20px;
+  right: 30px;
 
   &:hover {
     color: $app-color-link-hover;

@@ -14,7 +14,7 @@ export default {
       default: '¥'
     },
     value: {
-      default: 11
+      default: 0
     }
   },
   computed: {
